@@ -36,6 +36,9 @@ return {
       end,
     })
     -- keymaps
+
+    -- open NeoTree on start
+    vim.cmd 'Neotree reveal'
   end,
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -47,7 +50,13 @@ return {
     { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
   opts = {
+    close_if_last_window = true,
+    enable_git_status = true,
     filesystem = {
+      filtered_items = {
+        visible = true,
+        hide_gitignored = false,
+      },
       hijack_netrw_behavior = 'open_current',
       close_if_last_window = true,
       enable_git_status = true,
