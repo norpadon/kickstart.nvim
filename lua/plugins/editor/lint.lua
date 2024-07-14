@@ -3,7 +3,8 @@ return {
   config = function()
     require('lint').linters_by_ft = {
       markdown = { 'vale' },
-      --[[       python = { 'isort', 'ruff' }, ]]
+      python = { 'isort', 'ruff' },
+      rust = { 'cargo' },
     }
   end,
 }

@@ -21,7 +21,7 @@
 --]]
 
 if vim.g.neovide then
-  vim.opt.guifont = 'MartianMono Nerd Font:h14'
+  vim.opt.guifont = 'MartianMono Nerd Font:h12'
 end
 
 -- Set <space> as the leader key
@@ -99,6 +99,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.diagnostic.config {
+  update_in_insert = true,
+}
+
 -- File types.
 vim.filetype.add {
   extension = {
@@ -106,6 +110,10 @@ vim.filetype.add {
     bb = 'clojure',
   },
 }
+
+-- Spell checking
+vim.opt.spelllang = { 'en_us' }
+vim.opt.spell = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -182,7 +190,7 @@ require('lazy').setup({
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
-   { import = 'plugins' },
+  { import = 'plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

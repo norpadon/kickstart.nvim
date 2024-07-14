@@ -122,6 +122,28 @@ return { -- LSP Configuration & Plugins
             },
           },
         },
+        rust_analyzer = {
+          imports = {
+            granularity = {
+              group = 'module',
+            },
+            prefix = 'self',
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+          },
+          procMacro = {
+            enable = true,
+          },
+          diagnostics = {
+            enable = true,
+            experimental = {
+              enable = true,
+            },
+          },
+        },
       },
       ruff_lsp = {
         on_attach = function(client, _)
@@ -129,7 +151,11 @@ return { -- LSP Configuration & Plugins
         end,
       },
       clojure_lsp = {},
-      rust_analyzer = {},
+      rust_analyzer = {
+        on_attach = function(client, bufnr)
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end,
+      },
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
